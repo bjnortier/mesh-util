@@ -1,0 +1,40 @@
+{
+  "name": "mesh-util",
+  "version": "1.0.0",
+  "description": "Some mesh utilities",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "gulp test && webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bjnortier/mesh-util.git"
+  },
+  "keywords": [
+    "mesh",
+    "triangulation",
+    "vecks"
+  ],
+  "author": "Ben Nortier <ben@bjnortier.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bjnortier/mesh-util/issues"
+  },
+  "homepage": "https://github.com/bjnortier/mesh-util#readme",
+  "dependencies": {
+    "vecks": "^1.4.1"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jscs-stylish": "^1.3.0",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0",
+    "mocha": "^2.3.4",
+    "triptych": "^1.8.1",
+    "webpack": "^1.12.12"
+  }
+}

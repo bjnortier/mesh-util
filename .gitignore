@@ -1,0 +1,4 @@
+.DS_Store
+node_modules/
+test/functional/lib/*.bundle.js
+test/functional/lib/*.bundle.js.map
