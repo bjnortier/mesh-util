@@ -83,7 +83,7 @@ describe('Triangulate 3D Polygon', function() {
     ]);
   });
 
-  it.only('XY polygon', function() {
+  it('XY polygon', function() {
     var polygon = [
       {x: 0, y: 0, z: 0},
       {x: 20, y: 0, z: 0},
