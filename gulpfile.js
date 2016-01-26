@@ -7,7 +7,7 @@ var jscsStylish = require('gulp-jscs-stylish');
 
 var srcFiles = path.join('lib', '**', '*.js');
 var unitTestFiles = path.join('test', 'unit', '**', '*.test.js');
-var functionalTestFiles = path.join('test', 'functional', '**', '*.js');
+var functionalTestFiles = path.join('test', 'functional', 'src', '**', '*.js');
 
 gulp.task('clearconsole', function() {
   process.stdout.write('\x1Bc');
@@ -39,16 +39,12 @@ gulp.task('unit', ['jshint', 'jscs'], function() {
     .pipe(mocha());
 });
 
-gulp.task('functional', ['unit'], function() {
-
-});
-
-gulp.task('test', ['jshint', 'jscs', 'unit', 'functional']);
+gulp.task('test', ['jshint', 'jscs', 'unit']);
 
 gulp.task('default', ['test']);
 
 gulp.task('watch', function() {
-  gulp.watch([srcFiles], ['clearconsole', 'jshint', 'jscs', 'unit', 'functional']);
+  gulp.watch([srcFiles], ['clearconsole', 'jshint', 'jscs', 'unit']);
   gulp.watch([unitTestFiles], ['clearconsole', 'jshint', 'jscs', 'unit']);
-  gulp.watch([functionalTestFiles], ['clearconsole', 'jshint', 'jscs', 'functional']);
+  gulp.watch([functionalTestFiles], ['clearconsole', 'jshint', 'jscs']);
 });
