@@ -4,12 +4,11 @@ const ThreeJSScene = trip.scenes.ThreeJSScene;
 const Controller = trip.Controller;
 const Model = trip.Model;
 
-const triangulate2DPolygon = require('../../../../').triangulate2DPolygon;
 const PolygonOutlineView = require('./PolygonOutlineView');
 
 class Triangulate2DController extends Controller {
 
-  constructor(polygon) {
+  constructor(polygon, triangulateFn, cameraPosition) {
     super(new Model());
     this.model.polygons = [polygon];
 
@@ -17,13 +16,10 @@ class Triangulate2DController extends Controller {
     $('body').append(sceneElem);
 
     let threeJSSceneOptions = {
-      cameraPosition: {
-        x: 0, y: 0, z: 40,
-      },
+      cameraPosition: cameraPosition,
       cameraUp: {
         x: 0, y: 1, z: 0,
       },
-      disableRotate: true,
     };
     let scene = new ThreeJSScene(sceneElem, threeJSSceneOptions);
 
@@ -33,15 +29,15 @@ class Triangulate2DController extends Controller {
       linewidth: 2,
     });
 
-    let triangles = triangulate2DPolygon(polygon);
+    let triangles = triangulateFn(polygon);
     triangles.forEach((t, i) => {
       this.model.polygons.push(t);
       this.addView(scene, PolygonOutlineView, {color: 0x0000ff, index: i + 1});
     });
 
-    setTimeout(() => {
-      scene.zoomTo2DExtents();
-    }, 0);
+    // setTimeout(() => {
+    //   scene.zoomTo2DExtents();
+    // }, 0);
   }
 
 }
