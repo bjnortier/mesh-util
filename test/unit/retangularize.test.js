@@ -50,8 +50,8 @@ describe('Rectangularize a polygon with right-angled corners', function() {
         {x: 0, y: 0},
         {x: 10, y: 0},
         {x: 10, y: 10},
-        {x: 10, y: 19.999},
-        {x: 0, y: 19.999},
+        {x: 9.999, y: 20},
+        {x: 0, y: 20},
       ]);
     }, 'polygon has angles that are not right angles');
   });
@@ -61,6 +61,24 @@ describe('Rectangularize a polygon with right-angled corners', function() {
       {x: 0, y: 0},
       {x: 10, y: 0},
       {x: 10, y: 10},
+      {x: 0, y: 10},
+    ]);
+    assert.deepEqual(result, [
+      [
+        {x: 0, y: 0},
+        {x: 10, y: 0},
+        {x: 10, y: 10},
+        {x: 0, y: 10},
+      ]
+    ]);
+  });
+
+  it('rectangle with extra point', function() {
+    var result = rectangularize([
+      {x: 0, y: 0},
+      {x: 10, y: 0},
+      {x: 10, y: 10},
+      {x: 5, y: 10},
       {x: 0, y: 10},
     ]);
     assert.deepEqual(result, [
@@ -169,6 +187,39 @@ describe('Rectangularize a polygon with right-angled corners', function() {
         {x: -10, y: 10},
         {x: 10, y: 10},
         {x: 10, y: 0},
+      ]
+    ]);
+  });
+
+  it('empiric failure', function() {
+    var result = rectangularize([
+      { x: 0, y: 0 },
+      { x: 30, y: 0 },
+      { x: 30, y: 20 },
+      { x: 20, y: 20 },
+      { x: 20, y: 10 },
+      { x: 10, y: 10 },
+      { x: 10, y: 30 },
+      { x: 0, y: 30 },
+    ]);
+    assert.deepEqual(result, [
+      [
+        { x: 30, y: 0 },
+        { x: 30, y: 20 },
+        { x: 20, y: 20 },
+        { x: 20, y: 0 }
+      ],
+      [
+        { x: 0, y: 0 },
+        { x: 20, y: 0 },
+        { x: 20, y: 10 },
+        { x: 0, y: 10 }
+      ],
+      [
+        { x: 0, y: 10 },
+        { x: 10, y: 10 },
+        { x: 10, y: 30 },
+        { x: 0, y: 30 }
       ]
     ]);
   });

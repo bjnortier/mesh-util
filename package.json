@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/bjnortier/mesh-util#readme",
   "dependencies": {
-    "vecks": "^1.4.2"
+    "vecks": "^1.4.5"
   },
   "devDependencies": {
     "babel": "^6.3.26",
