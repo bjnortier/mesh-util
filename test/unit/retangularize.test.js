@@ -56,7 +56,7 @@ describe('Rectangularize a polygon with right-angled corners', function() {
     }, 'polygon has angles that are not right angles');
   });
 
-  it('simple', function() {
+  it('rectangle', function() {
     var result = rectangularize([
       {x: 0, y: 0},
       {x: 10, y: 0},
@@ -69,6 +69,106 @@ describe('Rectangularize a polygon with right-angled corners', function() {
         {x: 10, y: 0},
         {x: 10, y: 10},
         {x: 0, y: 10},
+      ]
+    ]);
+  });
+
+  it('single ear counterclockwise after is shorter', function() {
+    var result = rectangularize([
+      {x: 0, y: 0},
+      {x: 20, y: 0},
+      {x: 20, y: 10},
+      {x: 10, y: 10},
+      {x: 10, y: 20},
+      {x: 0, y: 20},
+    ]);
+    assert.deepEqual(result, [
+      [
+        {x: 0, y: 0},
+        {x: 20, y: 0},
+        {x: 20, y: 10},
+        {x: 0, y: 10},
+      ],
+      [
+        {x: 0, y: 10},
+        {x: 10, y: 10},
+        {x: 10, y: 20},
+        {x: 0, y: 20},
+      ]
+    ]);
+  });
+
+  it('single ear counterclockwise before is shorter', function() {
+    var result = rectangularize([
+      {x: 0, y: 0},
+      {x: 10, y: 0},
+      {x: 10, y: 10},
+      {x: -10, y: 10},
+      {x: -10, y: -10},
+      {x: 0, y: -10},
+    ]);
+    assert.deepEqual(result, [
+      [
+        {x: 0, y: 0},
+        {x: 10, y: 0},
+        {x: 10, y: 10},
+        {x: 0, y: 10},
+      ],
+      [
+        {x: 0, y: 10},
+        {x: -10, y: 10},
+        {x: -10, y: -10},
+        {x: 0, y: -10},
+      ]
+    ]);
+  });
+
+  it('single ear clockwise after is shorter', function() {
+    var result = rectangularize([
+      {x: 0, y: 0},
+      {x: 0, y: 20},
+      {x: 10, y: 20},
+      {x: 10, y: 10},
+      {x: 20, y: 10},
+      {x: 20, y: 0},
+    ]);
+    assert.deepEqual(result, [
+      [
+        {x: 0, y: 0},
+        {x: 0, y: 20},
+        {x: 10, y: 20},
+        {x: 10, y: 0},
+      ],
+      [
+        {x: 10, y: 0},
+        {x: 10, y: 10},
+        {x: 20, y: 10},
+        {x: 20, y: 0},
+      ]
+    ]);
+  });
+
+  it('single ear counterclockwise before is shorter', function() {
+    var result = rectangularize([
+      {x: 0, y: 0},
+      {x: 0, y: -10},
+      {x: -10, y: -10},
+      {x: -10, y: 10},
+      {x: 10, y: 10},
+      {x: 10, y: 0},
+    ]);
+    assert.deepEqual(result, [
+      [
+        {x: 0, y: 0},
+        {x: 0, y: -10},
+        {x: -10, y: -10},
+        {x: -10, y: 0},
+      ],
+      [
+        {x: -10, y: 0},
+        {x: -10, y: 10},
+        {x: 10, y: 10},
+        {x: 10, y: 0},
       ]
     ]);
   });
