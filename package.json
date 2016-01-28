@@ -1,26 +1,26 @@
 {
-  "name": "mesh-util",
+  "name": "polygon-util",
   "version": "1.0.0",
-  "description": "Some mesh utilities",
+  "description": "Some polygon utilities",
   "main": "lib/index.js",
   "scripts": {
     "test": "gulp test && webpack"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bjnortier/mesh-util.git"
+    "url": "git+https://github.com/bjnortier/polygon-util.git"
   },
   "keywords": [
-    "mesh",
+    "polygon",
     "triangulation",
     "vecks"
   ],
   "author": "Ben Nortier <ben@bjnortier.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bjnortier/mesh-util/issues"
+    "url": "https://github.com/bjnortier/polygon-util/issues"
   },
-  "homepage": "https://github.com/bjnortier/mesh-util#readme",
+  "homepage": "https://github.com/bjnortier/polygon-util#readme",
   "dependencies": {
     "vecks": "^1.4.5"
   },

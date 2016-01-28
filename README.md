@@ -1,2 +1,2 @@
-# mesh-util
-Some mesh utilities
+# polygon-util
+Some polygon utilities
